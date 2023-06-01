@@ -102,5 +102,8 @@
       }
     }
   },
-  "defaultProject": "angular_practical"
+  "defaultProject": "angular_practical",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
 }
