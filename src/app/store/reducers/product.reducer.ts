@@ -3,8 +3,6 @@ import { Product } from "src/app/views/product/interfaces/product.interface";
 import * as ProductActions from '../actions/product.action';
 import { EntityAdapter, EntityState, createEntityAdapter } from "@ngrx/entity";
 
-export const countryFeatureKey = 'country';
-
 export interface ProductState extends EntityState<Product> {
     loaded: boolean;
     isloading: boolean;
