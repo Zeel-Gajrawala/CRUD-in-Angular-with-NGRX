@@ -1,0 +1,62 @@
+<div class="container">
+    <div class="product-list-table my-5 p-4 border">
+        <div class="table-header d-flex justify-content-between">
+            <div class="heading">
+                <h5 class="text-dark m-0">Product List</h5>
+            </div>
+            <div class="add-btn">
+                <a routerLink="/add">
+                    <button type="button" class="btn btn-primary btn-sm">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                            <g id="Group_47" data-name="Group 47" transform="translate(-582 -564)">
+                                <rect id="Rectangle_62" data-name="Rectangle 62" width="2" height="12"
+                                    transform="translate(587 564)" fill="#fff" />
+                                <rect id="Rectangle_63" data-name="Rectangle 63" width="12" height="2"
+                                    transform="translate(582 569)" fill="#fff" />
+                            </g>
+                        </svg>
+                        Add Product</button>
+                </a>
+            </div>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let product of productList$ | async">
+                    <td>{{product.name}}</td>
+                    <td>{{product.price}}</td>
+                    <td>{{product.quantity}}</td>
+                    <td>
+                        <div class="d-flex">
+                            <button type="button" class="btn btn-sm me-3 border" [routerLink]="['edit',product.id]">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12.013"
+                                    viewBox="0 0 16 16.013">
+                                    <g id="svgg" transform="translate(-0.311 0.236)">
+                                        <path id="path0"
+                                            d="M13.186-.178c-.426.092-.546.178-1.324.95l-.714.708,1.731,1.727,1.731,1.727.677-.677c.929-.928,1.048-1.141,1.021-1.834-.025-.646-.132-.828-1.006-1.7-.9-.9-1.322-1.076-2.116-.9M5.731,6.9,1.294,11.337.8,13.321C.257,15.475.244,15.552.39,15.7s.223.132,2.377-.407l1.984-.5,4.437-4.437c2.44-2.44,4.437-4.451,4.437-4.468,0-.041-3.384-3.425-3.425-3.425-.017,0-2.028,2-4.468,4.437"
+                                            transform="translate(0 0)" fill="#778299" fill-rule="evenodd" />
+                                    </g>
+                                </svg>
+                            </button>
+                            <button type="button" class="btn btn-sm border" (click)="deleteProduct(product.id!)">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12.998" height="13.997"
+                                    viewBox="0 0 15.998 17.997">
+                                    <path id="Subtraction_4" data-name="Subtraction 4"
+                                        d="M19572.941-3544.5h-8.887a1.791,1.791,0,0,1-1.779-1.8v-10.8h-1.773v-1.8h3.553v-1.8a1.791,1.791,0,0,1,1.779-1.8h5.33a1.79,1.79,0,0,1,1.777,1.8v1.8h3.559v1.8h-1.779v10.8A1.791,1.791,0,0,1,19572.941-3544.5Zm-3.443-11h0v7h2v-7h-2Zm-4,0h0v7h2v-7h-2Zm.336-5.2h0v1.8h5.33v-1.8h-5.33Z"
+                                        transform="translate(-19560.502 3562.5)" fill="#778299" />
+                                </svg>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
