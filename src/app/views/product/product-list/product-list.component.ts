@@ -24,7 +24,7 @@ export class ProductListComponent implements OnInit {
     this.productList$ = this.store.select(getAllProducts);
   }
 
-  deleteProduct(productId: number) { 
+  deleteProduct(productId: string) { 
     this.store.dispatch(ProductActions.DeleteProduct({productId}));
   }
 
