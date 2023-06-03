@@ -15,7 +15,10 @@ const routes: Routes = [
       },
       {
         path:'edit/:productId',
-        component:ProductEditComponent
+        component:ProductEditComponent,
+        resolve:{
+          products:ProductResolver
+        }
       },
       {
         path:'',

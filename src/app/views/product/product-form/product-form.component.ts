@@ -66,8 +66,6 @@ export class ProductFormComponent implements OnInit {
   }
 
   submitProductForm() {
-    console.log(this.productForm.value);
-
     if (this.productForm.valid) {
       if (this.editMode) {
         this.updateProduct.emit(this.productForm.value);

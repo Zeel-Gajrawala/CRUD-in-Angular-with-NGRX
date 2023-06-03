@@ -13,7 +13,6 @@ import * as ProductActions from 'src/app/store/actions/product.action';
 })
 export class ProductListComponent implements OnInit {
 
-  loader: boolean = false;
   productList$: Observable<Product[]> = new Observable<Product[]>();
 
   constructor(
