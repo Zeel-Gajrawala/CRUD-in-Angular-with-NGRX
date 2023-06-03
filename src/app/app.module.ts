@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import { metaReducers, reducers } from './store/reducers';
 import { EffectsModule } from '@ngrx/effects';
+import { ProductResolver } from './views/product/resolvers/product.resolver';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { EffectsModule } from '@ngrx/effects';
     }),
     EffectsModule.forRoot([])
   ],
-  providers: [],
+  providers: [ProductResolver],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
