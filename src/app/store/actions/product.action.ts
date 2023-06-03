@@ -23,5 +23,5 @@ export const UpdateProduct = createAction(
 
 export const DeleteProduct = createAction(
   '[Products] Delete Products',
-  props<{ productId: number }>()
+  props<{ productId: string }>()
 );

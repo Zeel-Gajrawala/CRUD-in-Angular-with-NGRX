@@ -20,10 +20,10 @@ export const ProductReducer = createReducer(
     initialState,
     on(ProductActions.LoadProducts, (state) => ({ ...state, isloading: true })),
     on(ProductActions.LoadProductsSuccess, (state, action) => {
-        return adapter.addMany(action.products, { ...state, isloading: false, loaded: true });
+        return adapter.setAll(action.products, { ...state, isloading: false, loaded: true });
     }),
     on(ProductActions.LoadProductsFailure, (state, action) => {
-        return adapter.addMany(action.error, { ...state, isloading: false, loaded: true });
+        return adapter.setAll(action.error, { ...state, isloading: false, loaded: true });
     }),
     on(ProductActions.AddProduct, (state, action) => {
         return adapter.addOne(action.product, state);

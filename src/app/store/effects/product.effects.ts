@@ -1,15 +1,17 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { ProductService } from "src/app/core/services/product.service";
+import { ProductService } from 'src/app/core/services/product/product.service';
 import * as ProductActions from '../actions/product.action';
-import { catchError, concatMap, map, of } from "rxjs";
+import { catchError, concatMap, map, of, tap } from "rxjs";
+import { Router } from "@angular/router";
 
 @Injectable()
 export class ProductEffects {
 
     constructor(
         private action$: Actions,
-        private productService: ProductService
+        private productService: ProductService,
+        private router: Router
     ) { }
 
     loadProducts$ = createEffect(() =>
@@ -24,7 +26,8 @@ export class ProductEffects {
     createProduct$ = createEffect(() =>
         this.action$.pipe(
             ofType(ProductActions.AddProduct),
-            concatMap((action) => this.productService.createProduct(action.product))
+            concatMap((action) => this.productService.createProduct(action.product)),
+            tap(() => this.router.navigateByUrl('/products'))
         ),
         { dispatch: false }
     );
@@ -32,7 +35,8 @@ export class ProductEffects {
     updateProduct$ = createEffect(() =>
         this.action$.pipe(
             ofType(ProductActions.UpdateProduct),
-            concatMap((action) => this.productService.updateProduct(action.product.id, action.product.changes))
+            concatMap((action) => this.productService.updateProduct(action.product.id, action.product.changes)),
+            tap(() => this.router.navigateByUrl('/products'))
         ),
         { dispatch: false }
     );
