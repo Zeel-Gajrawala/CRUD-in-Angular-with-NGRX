@@ -12,7 +12,7 @@ import { RouterModule } from '@angular/router';
 import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
@@ -29,6 +29,7 @@ import { ProductDetailsComponent } from './product-details/product-details.compo
     ProductRoutingModule,
     ReactiveFormsModule,
     RouterModule,
+    FormsModule,
     StoreModule.forFeature('products', ProductReducer),
     EffectsModule.forFeature([ProductEffects])
   ],

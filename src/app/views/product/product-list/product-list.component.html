@@ -1,10 +1,18 @@
 <div class="container">
     <div class="product-list-table my-5 p-4 border">
         <div class="table-header d-flex justify-content-between">
-            <div class="heading">
+            <div class="heading w-100">
                 <h5 class="text-dark m-0">Product List</h5>
             </div>
-            <div class="add-btn">
+            <div class="add-btn d-flex justify-content-end">
+                <div class="search-btn me-3 w-50">
+                    <div class="input-group input-group-sm flex-nowrap">
+                        <span class="input-group-text" id="addon-wrapping" style="width: 17%;">
+                            <img class="w-100" src="assets/images/magnifying-glass-icon.png" alt="search icon" />
+                        </span>
+                        <input type="text" class="form-control" placeholder="Search" [(ngModel)]="search" (keyup)="searchInputChange()">
+                    </div>
+                </div>
                 <a routerLink="/add">
                     <button type="button" class="btn btn-primary btn-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
@@ -15,7 +23,8 @@
                                     transform="translate(582 569)" fill="#fff" />
                             </g>
                         </svg>
-                        Add Product</button>
+                        Add Product
+                    </button>
                 </a>
             </div>
         </div>
@@ -29,7 +38,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let product of productList$ | async">
+                <tr *ngFor="let product of productFiltered$ | async">
                     <td>{{product.name}}</td>
                     <td>{{product.price}}</td>
                     <td>{{product.quantity}}</td>
