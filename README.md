@@ -1,27 +1,73 @@
-# AngularPractical
+# CRUD using Ngrx
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.3.
+Implemented basic CRUD using Ngrx and tested using Jasmine / Karma.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Run Locally
 
-## Code scaffolding
+Clone the project
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+  git clone https://github.com/Zeel-Gajrawala/angular_practical.git
+```
 
-## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+### To run the project:-
+ Perform any of the two below listed steps.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+a. Install Node on your system from https://nodejs.org/en/download/ .
 
-## Running end-to-end tests
+b. Open terminal.
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+c. Check node version to see if node is installed properly.
 
-## Further help
+```bash
+  node --v
+```
+It must show the node version installed.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+d. Install Angular CLI version 13.3.0 globally using npm.
+
+```bash
+  npm install -g  @angular/cli@13.3.0
+```
+
+e. Check angular version to see if it is installed properly.
+
+
+```bash
+  ng v
+```
+
+f. Go to the project directory.
+
+g. Install dependencies
+
+```bash
+  npm install
+```
+
+h. Start the json server
+
+```bash
+  json-server --watch db.json
+```
+
+
+i. Start the server
+
+```bash
+  npm start
+```
+#### OR, 
+
+```bash
+  ng serve
+```
+
+Your server is running now.
+
+Open http://localhost:4200/ on your browser to run your frontend.
+
