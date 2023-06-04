@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/store/reducers';
 import { Product } from '../interfaces/product.interface';
 import { getAllProducts } from 'src/app/store/selectors/product.selector';
-import { Observable, map } from 'rxjs';
+import { Subscription, map } from 'rxjs';
 import * as ProductActions from 'src/app/store/actions/product.action';
 import { Update } from '@ngrx/entity';
 
@@ -13,15 +13,17 @@ import { Update } from '@ngrx/entity';
   templateUrl: './product-edit.component.html',
   styleUrls: ['./product-edit.component.css']
 })
-export class ProductEditComponent implements OnInit {
+export class ProductEditComponent implements OnInit, OnDestroy {
 
   loader: boolean = true;
   productId: string = '';
   editProductData: Product = {};
+  subscription!: Subscription;
 
   constructor(
     private activatedRoute: ActivatedRoute,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -30,15 +32,19 @@ export class ProductEditComponent implements OnInit {
     })
 
     if (this.productId && this.productId.length > 0) {
-      let productList: Observable<Product[]> = this.store.select(getAllProducts);
-
-      productList.pipe(
+      this.subscription = this.store.select(getAllProducts).pipe(
         map((productList) => productList.find((product) => product.id == this.productId))
       ).subscribe((product) => {
         this.editProductData = product!;
       });
 
       this.loader = false;
+    }
+  }
+
+  ngOnDestroy(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
@@ -51,6 +57,7 @@ export class ProductEditComponent implements OnInit {
     }
 
     this.store.dispatch(ProductActions.UpdateProduct({ product }));
+    this.router.navigateByUrl('/products');
   }
 
 }

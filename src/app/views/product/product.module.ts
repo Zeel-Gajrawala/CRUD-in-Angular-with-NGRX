@@ -13,6 +13,7 @@ import { ProductFormComponent } from './product-form/product-form.component';
 import { ProductAddComponent } from './product-add/product-add.component';
 import { ProductEditComponent } from './product-edit/product-edit.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     ProductListComponent,
     ProductFormComponent,
     ProductAddComponent,
-    ProductEditComponent
+    ProductEditComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,
